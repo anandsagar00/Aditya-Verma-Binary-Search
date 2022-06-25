@@ -1,65 +1,69 @@
-//Number of times a SORTED ARRAY is ROTATED
+// Number of times a SORTED ARRAY is ROTATED
+
+// Explanation : https://www.youtube.com/watch?v=4WmTRFZilj8&list=PL_z_8CaSLPWeYfhtuKHj-9MpYb6XQJ_f2&index=7&t=721s
 
 #include <bits/stdc++.h>
 using namespace std;
 
 int main()
 {
-    // sorted array
-    int arr[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 15, 15, 15, 15, 15, 16, 17, 18, 19, 20};
+    // sorted array which is rorated 7 times
 
-    int h = 19; // size-1
-    int l = 0;
-    int key = 15;
-    int flag = 0;
+    int arr[] = {8, 9, 10, 15, 15, 15, 15, 15, 16, 17, 18, 19, 20, 1, 2, 3, 4, 5, 6, 7};
+    int n=20;
 
-    // Finding the first occurence of the Key
+    // Number of times an array is rotated depends on index of minimum element ( also known as pivot)
+    // first technique is to find linear search
+    // 2nd is to do BINARY SEARCH
 
-    while (l <= h)
+    int high = 19; // size-1
+    int low = 0;
+
+    // 1. at once to find the element is min or not , 2. which side to move
+
+    // The min element is smaller than both its neighbours
+
+    int index=-1;
+
+    if (arr[low] < arr[high])
     {
-        int mid = l + (h - l) / 2;
-        if (arr[mid] == key && (mid == 0 || arr[mid - 1] < key))
-        {
-            cout << "First Index of element is : " << mid;
-            flag = 1;
-            break;
-        }
-        else if (key <= arr[mid])
-        {
-            h = mid - 1;
-        }
-        else
-        {
-            l = mid + 1;
-        }
-    }
-    if (flag == 0)
-    {
-        cout << "\nElement not found.\n";
+        cout << "Array is sorted .\n";
     }
     else
     {
-        h = 19; // size-1
-        l = 0;
-
-        // Finding the last occurence of the Key
-
-        while (l <= h)
+        while (low <= high)
         {
-            int mid = l + (h - l) / 2;
-            if (arr[mid] == key && (mid == 19 /* last index or n-1 */ || arr[mid + 1] > key))
+            int mid=low+(high-low)/2;
+            // taking the circular feel of array
+            int next = (mid+1)%n;
+            int prev = (mid - 1 + n )%n;
+
+            if(arr[mid]<=arr[next] && arr[mid] <= arr[prev])
             {
-                cout << "\nLast Index of element is : " << mid;
+                index=mid;
                 break;
-            }
-            else if (key >= arr[mid])
-            {
-                l=mid+1;
             }
             else
             {
-                h = mid - 1;
+                //We will travel towards the unsorted array
+                // If the start is less than equal to mid then the array is sorted otherwise not ( Aditya Verma 19:30)
+
+                //checking if first half is sorted or not
+                if(arr[low]<= arr[mid])
+                {
+                    low=mid+1;
+                } 
+                //checking if 2nd half is sorted or not
+                else if(arr[mid]<=arr[high])
+                {
+                    high-=1;
+                }
             }
         }
     }
+    if(index != -1)
+    {
+        cout<<"\nArray has been rotated "<<n-index<<" times.\n";
+    }
+    
 }
