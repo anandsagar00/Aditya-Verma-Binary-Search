@@ -21,7 +21,7 @@ int main()
         if(arr[mid]==key)
         {
             flag=1;
-            cout<<"Element's index is : "<<mid;
+            cout<<"Element found"<<mid;
             break;
         }
         else if(key>arr[mid])

@@ -18,7 +18,7 @@ int main()
         int mid=l+(h-l)/2;
         if(arr[mid]==key)
         {
-            cout<<"Index of element is : "<<mid;
+            cout<<"Element found.\n";
             flag=1;
             break;
         }
