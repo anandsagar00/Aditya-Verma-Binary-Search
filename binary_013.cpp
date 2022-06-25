@@ -13,7 +13,7 @@ int main()
     int arr[] = {2, 4, 6, 10, 19, 272, 280, 300, 312, 345, 350, 400};
     int n = 12;
 
-    // 2 conn : a. Key is present , b. Key not present
+    // 2 codition : a. Key is present , b. Key not present
 
     // If key is present in array then difference is 0
 
