@@ -33,12 +33,12 @@ int main()
             else
                 low = mid + 1;
         }
-        else if(mid==0 && arr[mid] > arr[mid+1])
+        else if(mid==0 && arr[mid] >= arr[mid+1])
         {
             cout<<arr[mid]<<endl;
             break;
         }
-        else if(mid==n-1 && arr[mid] > arr[mid-1])
+        else if(mid==n-1 && arr[mid] >= arr[mid-1])
         {
             cout<<arr[mid]<<endl;
             break;
