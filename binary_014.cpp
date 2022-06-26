@@ -38,7 +38,7 @@ int main()
 
         if (mid > 0 && mid < n - 1)
         {
-            if (arr[mid] > arr[mid - 1] && arr[mid] > arr[mid - 1])
+            if (arr[mid] > arr[mid - 1] && arr[mid] > arr[mid + 1])
                 cout << arr[mid] << " ";
             else if (arr[mid - 1] > arr[mid])
             {
