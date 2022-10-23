@@ -49,17 +49,13 @@ int main()
                 // We will travel towards the unsorted array
                 //  If the start is less than equal to mid then the array is sorted otherwise not ( Aditya Verma 19:30)
 
-                // checking if first half is sorted or not
-                // if sorted then move towards unsorted array
-                if (arr[low] <= arr[mid])
-                {
-                    low = mid + 1;
-                }
-                // checking if 2nd half is sorted or not
-                else if (arr[mid] <= arr[high])
-                {
-                    high = mid - 1;
-                }
+                else if(arr[mid]>=arr[high])
+	            {
+	                //this condition will guarantee that the second half is unsorted
+	                low=mid+1;
+	            }
+	            else
+	            high=mid-1;
             }
         }
         if (index != -1)
