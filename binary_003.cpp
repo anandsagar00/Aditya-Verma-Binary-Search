@@ -1,6 +1,6 @@
 // First and Last occurence of an element
 
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
 
 int main()
@@ -15,25 +15,26 @@ int main()
 
     // Finding the first occurence of the Key
 
+    int first=-1,last=-1;
+
     while (l <= h)
     {
-        int mid = l + (h - l) / 2;
-        if (arr[mid] == key && (mid == 0 || arr[mid - 1] < key))
+        int mid=l+(h-l)/2;
+        if(arr[mid]==key)
         {
-            cout << "First Index of element is : " << mid;
-            flag = 1;
-            break;
+            first=mid;
+            h=mid-1;
         }
-        else if (key <= arr[mid])
+        else if(key>arr[mid])
         {
-            h = mid - 1;
+            l=mid+1;
         }
         else
         {
-            l = mid + 1;
+            h=mid-1;
         }
     }
-    if (flag == 0)
+    if (first == -1)
     {
         cout << "\nElement not found.\n";
     }
@@ -41,25 +42,27 @@ int main()
     {
         h = 19; // size-1
         l = 0;
-
+        
         // Finding the last occurence of the Key
 
         while (l <= h)
         {
             int mid = l + (h - l) / 2;
-            if (arr[mid] == key && (mid == 19 /* last index or n-1 */ || arr[mid + 1] > key))
+            if(arr[mid]==key)
             {
-                cout << "\nLast Index of element is : " << mid;
-                break;
-            }
-            else if (key >= arr[mid])
-            {
+                last=mid;
                 l=mid+1;
+            }
+            else if(key<arr[mid])
+            {
+                h=mid-1;
             }
             else
             {
-                h = mid - 1;
+                l=mid+1;
             }
         }
     }
+
+    cout<<"First and Last occurence of "<<key<<" is : "<<first<<" and "<<last<<" respectively.\n";
 }
